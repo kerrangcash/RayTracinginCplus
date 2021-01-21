@@ -42,7 +42,7 @@ class vec3 {
         }
 
         double length_squared() const {
-            e[0]*e[0] + e[1]*e[1] + e[2]*e[2];
+            return e[0]*e[0] + e[1]*e[1] + e[2]*e[2];
 
         }
 
@@ -56,7 +56,7 @@ class vec3 {
 using point3 = vec3; //3d point
 using color = vec3; // colour 
 
-#endif
+//#endif
 
 //vec3 utility functions
 
@@ -100,3 +100,4 @@ inline vec3 unit_vector(vec3 v) {
     return v / v.length();
 }
 
+#endif

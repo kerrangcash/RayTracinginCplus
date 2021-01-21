@@ -1,3 +1,6 @@
+#include "color.h"
+#include "vec3.h"
+
 #include <iostream>
 
 int main() {
@@ -11,21 +14,15 @@ int main() {
 
     //writes rows of pixels from top to bottom
     for (int i = img_height-1; i>= 0; --i) {
-        
+
         // progress indicator
         std::cerr << "\rSclanlines remaining: " << i << ' ' << std::flush;
 
         //writes rows of picxels from left to right
         for (int j = 0; j < img_width; ++j) {
-            auto r = double(j) / (img_width-1);
-            auto g = double(i) / (img_height-1);
-            auto b = 0.25;
-
-            int ir = static_cast<int>(255.999*r);
-            int ig = static_cast<int>(255.999*g);
-            int ib = static_cast<int>(255.999*b);
-
-            std::cout << ir << ' ' << ig << ' ' << ib << '\n';
+            color pixel_color(double(j)/(img_width-1), double(i)/(img_height-1), 0.25);
+            write_color(std::cout, pixel_color);
         }
     }
+    std::cerr << "\nDone. \n";
 }
