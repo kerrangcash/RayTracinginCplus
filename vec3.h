@@ -26,14 +26,14 @@ class vec3 {
             return *this;
         }
 
-        vec3& operator*= (const double t) {
+        vec3& operator*=(const double t) {
             e[0] *= t;
             e[1] *= t;
             e[2] *= t;
             return *this;
         }
 
-        vec3& operator /= (const double t) {
+        vec3& operator/=(const double t) {
             return *this *= 1/t;
         }
 
@@ -54,9 +54,9 @@ class vec3 {
 
 //type aliases
 using point3 = vec3; //3d point
-using color = vec3; // colour 
+using color = vec3; // colour
 
-//#endif
+//
 
 //vec3 utility functions
 
@@ -77,7 +77,11 @@ inline vec3 operator*(const vec3 &u, const vec3 &v) {
 }
 
 inline vec3 operator*(double t, const vec3 &v) {
-    return vec3(t*v.e[0], t * v.e[1], t * v.e[2]);
+    return vec3(t*v.e[0], t*v.e[1], t*v.e[2]);
+}
+
+inline vec3 operator*(const vec3 &v, double t) {
+    return t * v;
 }
 
 inline vec3 operator/(vec3 v, double t) {
