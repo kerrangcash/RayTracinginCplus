@@ -31,7 +31,7 @@ color ray_color(const ray& r, hittable& world, int depth) {
     
 
     if (world.hit(r, 0.0001, infinity, rec)) {
-        point3 target = rec.p + rec.normal + random_unit_vector();
+        point3 target = rec.p + rec.normal + random_in_hemisphere(rec.normal);
         return 0.5 * ray_color(ray(rec.p, target - rec.p), world, depth-1);
     }
     vec3 unit_direction = unit_vector(r.direction());
@@ -46,7 +46,7 @@ int main() {
     const int img_width = 400;
     const int img_height = static_cast<int>(img_width/aspect_ratio);
     const int samples_per_pixel = 100;
-    const int max_depth = 25;
+    const int max_depth = 50;
 
     //generate world properties
     hittable_list world;
